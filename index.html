@@ -100,7 +100,7 @@
 <section>
     <h2>Terminology</h2>
 
-        Throughout the document, the following terminology is used. Some terms are reused from other specifications for visual notations [[MAPVOWL]].
+        Throughout the document, the following terminology is used.
 
     <section>
         <h2>General</h2>
@@ -123,6 +123,34 @@
             <dd>
                 An entity and its attributes are connected with each other using relationships.
                 A relationship describes how a attribute relates to its entity.
+            </dd>
+            <dt><dfn id="dfn-constraints">constraints</dfn></dt>
+            <dd>
+               A constraint is a condition on data which should be satisfied. Several types of constraints exist,
+               e.g. a datatype constraint on a property restricts the value of that property to be of a specific datatype
+               and a cardinality constraint on a property restricts the number of that property.
+            </dd>
+            <dt><dfn id="dfn-data-shape">data shape</dfn></dt>
+            <dd>
+               A data shape is a set of conditions on RDF data.
+               It provides context for constraints, i.e. a datatype constraint can be used
+               in different data shapes which corresponds to different contexts.
+            </dd>
+            <dt><dfn id="dfn-node-shape">node shape</dfn></dt>
+            <dd>
+               A node shape is a specific data shape which represents conditions on nodes,
+               i.e. subjects and objects of triples.
+            </dd>
+            <dt><dfn id="dfn-property-shape">property shape</dfn></dt>
+            <dd>
+               A property shape is a specific data shape which represents conditions on properties and their values,
+               i.e. predicates and related objects of triples.
+            </dd>
+            <dt><dfn id="dfn-severity">severity</dfn></dt>
+            <dd>
+               Each data shape has a severity which qualifies the violation of the stated conditions.
+               By default a data shape has the severity "violation" but other severities can be defined,
+               i.e. the SHACL core specifies the three severities "violation", "warning" and "information".
             </dd>
         </dl>
     </section>
@@ -155,7 +183,7 @@
 <section>
     <h2>Graphical Primitives</h2>
 
-    <table id="tab-vis-prim">
+    <table id="tab-vis-prim" class="small-images">
         <tr>
             <th>Name</th>
             <th>Primitive</th>
@@ -188,7 +216,7 @@
             <td>
                 <ul>
                     <li>relationship</li>
-                    <li>border of nodes</li>
+                    <li>border of rectangles</li>
                 </ul>
             </td>
         </tr>
@@ -196,7 +224,8 @@
             <td><img src="./images/primitives/dashed-edge.svg"/></td>
             <td>
                 <ul>
-                    <li>anonymous entity</li>
+                    <li>relationship between data shapes</li>
+                    <li>one-to-many relationships</li>
                 </ul>
             </td>
         </tr>
@@ -231,8 +260,8 @@
                 <td class="side">canvas</td>
                 <td>#ffffff</td>
                 <td>white</td>
-                <td>*todo*</td>
-                <td>*todo*</td>
+                <td>Bright color with a good contrast to all other colors.</td>
+                <td>canvas where are all other graph elements are shown on</td>
             </tr>
             <tr>
                 <td class="side">foreground</td>
@@ -244,92 +273,105 @@
             <tr>
                 <td class="side">base color</td>
                 <td colspan="2">see next table</td>
-                <td>Every data source has its own base color, unique for every source.</td>
-                <td>*todo*</td>
+                <td>Color is not material to UML; we recommend no specific color, i.e. the same as the canvas color.</td>
+                <td>standard fill color of elements</td>
             </tr>
             <tr>
                 <td class="side">highlight</td>
                 <td colspan="2">see next table</td>
-                <td>For each element coming from a source, and property, the highlight color is a darker shade of the
-                    base color of that source or property.
+                <td>For each data shape the highlight color is a darker shade of the
+                    base color of that element.
                 </td>
-                <td>*todo*</td>
+                <td>fill color of the graph elements when selected</td>
             </tr>
             <tr>
-                <td class="side">error</td>
+                <td class="side">severity</td>
                 <td colspan="2">see next table</td>
-                <td>For each element coming from a source, and property, the error color is in strong contrast with the
-                    base color of that source or property.
+                <td>Every severity has its own color.
                 </td>
-                <td>*todo*</td>
+                <td>fill color of the data shape based on its severity; default severity is violation</td>
             </tr>
         </table>
     </section>
 
+    <section id="sec-color-schemas">
+        <h2>Color Schemas</h2>
+
+        <table id="tab-color-schemas">
+            <tr>
+                <th>Color Schema Name</th>
+                <th>Base Color</th>
+                <th>Highlight</th>
+            </tr>
+           <tr>
+                <td>Data shape</td>
+                <td style="background: #ffffff;">#ffffff</td>
+                <td style="background: #b7b7b7; color: #ffffff">#981c1c</td>
+            </tr>
+            <tr>
+                <td>severity violation</td>
+                <td style="background: #e06666;">#e06666</td>
+                <td style="background: #981c1c; color: #ffffff">#b7b7b7</td>
+            </tr>
+            <tr>
+                <td>severity warning</td>
+                <td style="background: #ffd966;">#ffd966</td>
+                <td style="background: #bf9000; color: #ffffff">#bf9000</td>
+            </tr>
+            <tr>
+                <td>severity information</td>
+                <td style="background: #93c47d;">#93c47d</td>
+                <td style="background: #38761d; color: #ffffff">#b7b7b7</td>
+            </tr>
+        </table>
+    </section>
+</section>
+
+
 <section>
-    <h2>Visualization</h2>
+    <h2>Constraints</h2>
 
+    First, we elaborate on how constraints and data shapes are visualized.
+    Next, we provide a visual example.
     <section>
-        <h2>Entity</h2>
+        <h2>Visualization</h2> 
+        <table id="tab-visualization" class="example-table">
+            <tr>
+                <th>Visualization</th>
+                <th>Description</th>
+            </tr>
+           <tr>
+                <td style="width:100%;height:100%"><img src="./images/example-node-shape.svg" style="height:100%;width:100%" /></td>
+                <td>Conditions on a node which by default will apply on instances of class schema:Person.</td>
+            </tr>
+            <tr>
+                <td><img src="./images/example-property-shape.svg" style="height:100%;width:100%" /></td>
+                <td>Conditions on the property ex:fullName expressed as a property shape.</td>
+            </tr>
+            <tr>
+                <td><img src="./images/example-node-property-relation.svg" style="height:100%;width:100%"/></td>
+                <td>Conditions on a node combined with conditions on a related property.</td>
+            </tr>
+            <tr>
+                <td><img src="./images/example-one-to-many.svg" style="height:70%;width:70%" /></td>
+                <td>Conditions for node and related properties combined using logical operators using a one-to-many relationship.</td>
+            </tr>
+            <tr>
+                <td><img src="./images/example-data-shape-relation.svg" style="height:70%;width:70%"/></td>
+                <td>Conditions refer to other conditions.</td>
+            </tr>
+        </table>
+ 
+   </section>
 
-        <p>
-            An entity is visualized as node by using the visual primitive <span class="emph">circle</span> using the ?? line style.
-            Inside the node the following information is show if available: parameter of the value type and the entity type.
-            The color of the node depends on the value type and the input data source (also see the <a href="#sec-colors">colors section</a>).
-        </p>
-    </section>
-
-    <section>
-        <h2>Anonymous Entity</h2>
-
-        <p>
-            An entity is visualized as node by using the visual primitive <span class="emph">circle</span> using the ?? line style.
-            Inside the node only the entity type is shown if available.
-            The color of the node is defined <a href="#sec-color-schemas">here</a>.
-        </p>
-    </section>
-
-    <section>
-        <h2>Attribute</h2>
-
-        <p>
-            An attribute is visualized as node by using the visual primitive <span class="emph">rectangle</span> using the ?? line style.
-            Inside the node only the parameter of the value type is specified.
-        </p>
-    </section>
-
-    <section>
-        <h2>Relationship</h2>
-
-        <p>
-            A relationship always has a starting point an (anonymous) entity.
-            The end point of a relationship can be either an (anonymous) entity or an attribute.
-            Between the nodes a line is drawn using the ?? line style.
-            One or multiple arrowheads are used to state the direction from the relationship: from the starting point to
-            the ending point.
-        </p>
-    </section>
-
-    <section>
-        <h2>What Is Not Shown</h2>
-
-        <ul>
-            <li>The actual error/warning/suggestion/condition is not shown in the visualization. However, when clicking on the
-                cooresponding icon users receive more information through the GUI.
-            </li>
-            <li>The language of an attribute is not shown. However, when clickon the node representing the attribute
-                more information about the attribute is shown in the GUI including the language.
-            </li>
-        </ul>
-    </section>
     <section>
         <h2>Example</h2>
         <p>
             Below you can find an example for constraints expressed with ShapeUML.
         </p>
 
-        <figure id="example-highest">
-            <img src="images/example-highest.svg" />
+        <figure id="example-highest"> 
+            <img src="images/example-highest.svg" style="height:100%;width:100%" />
             <figcaption>Test</figcaption>
         </figure>
    </section>
