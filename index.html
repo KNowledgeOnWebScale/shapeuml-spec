@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShapeUML: RDF Constraints Visualization based on UML</title>
+    <meta charset='utf-8'>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
+            async class='remove'></script>
+    <script class='remove'>
+        var respecConfig = {
+            specStatus: "unofficial",
+            shortName: "constraints-visualization",
+            authors: [
+                {
+                    name: "Sven Lieber",
+                    url: "https://sven-lieber.org",
+                    mailto: "sven.lieber@ugent.be",
+                    company: "Ghent University — IDLab — imec",
+                }
+            ],
+            editors: [
+                {
+                    name: "Sven Lieber",
+                    url: "https://sven-lieber.org",
+                    mailto: "sven.lieber@ugent.be",
+                    company: "Ghent University — IDLab — imec",
+                },
+                {
+                    name: "Anastasia Dimou",
+                    company: "Ghent University — IDLab — imec",
+                }
+            ],
+            localBiblio:  {
+                "RDF": {
+                  title: "RDF 1.1 Concepts and Abstract Syntax"
+                  , href: "https://www.w3.org/TR/rdf11-concepts/"
+                  , publisher: "W3C"
+                },
+                "SHACL": {
+                  title: "Shapes Constraint Langauge (SHACL)"
+                  , href: "https://www.w3.org/TR/shacl/"
+                  , publisher: "W3C"
+                },
+                "UML": {
+                  title: "Unified Modeling Language (UML)"
+                  , href: "https://www.omg.org/spec/UML/2.5.1"
+                  , publisher: "Object Management Group (OMG)"
+                },
+                "ODM": {
+                  title: "Ontology Definition Metamodel (ODM)"
+                  , href: "https://www.omg.org/spec/ODM/1.1/"
+                  , publisher: "Object Management Group (OMG)"
+                },
+                "MAPVOWL": {
+                  title: "MapVOWL"
+                  , href: "https://rml.io/specs/mapvowl/"
+                  , publisher: "rml.io"
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+<section id='abstract'>
+    <p>
+
+      This document  defines ShapeUML, a visual notation for RDF constraints. It specifies the visualization primitives to represent constraints to users.
+      
+    </p>
+</section>
+
+<section id='sotd'>
+    <p>
+        This document is the result of research and the accompanying paper is currently under submission at the 22nd International Conference on Knowledge Engineering and Knowledge Management (EKAW 2020).
+    </p>
+</section>
+
+<section class='informative'>
+    <h2>Introduction</h2>
+    <p>
+        Knowledge Graphs defined with the Resource Description Framework [[RDF]] consist of vocabulary terms and instance data both described using the graph model of RDF.
+        Several constraint languages exist to define conditions on such RDF graphs, one such language is the W3C recommended Shapes Constraint Language [[SHACL]]
+        which itself is represented using RDF.
+        Users rely on different types of constraints offered by constraint languages to define conditions on RDF graphs.
+    </p>
+    <p>
+        With respect to visual notations, the Unified Modeling Language [[UML]] is widely used in many disciplines.
+        A specific UML-profile for RDF [[ODM]] states how RDF classes and properties are mapped to UML classes.
+        ShapeUML follows this profile but also adapt graphical symbols to the needs for RDF constraints.
+    </p>
+</section>
+
+<!--<section class='informative'>
+    <h2>Design Goals and Rationale</h2>
+</section>
+-->
+
+<section>
+    <h2>Terminology</h2>
+
+        Throughout the document, the following terminology is used. Some terms are reused from other specifications for visual notations [[MAPVOWL]].
+
+    <section>
+        <h2>General</h2>
+
+        <dl>
+            <dt><dfn id="dfn-entity">(anonymous) entity</dfn></dt>
+            <dd>
+                An entity is something that exists as a distinct, independent, or self-contained unit.
+                Examples are people, companies, buildings and so on.
+                If you want to uniquely address an entity then it needs to have a unique name.
+                Therefore, entities use HTTP URIs.
+                However, when a entity does not have a URI we call it an <span class="emph">anonymous</span> entity.
+            </dd>
+            <dt><dfn id="dfn-attribute">attribute</dfn></dt>
+            <dd>
+                More information is provided about an entity by adding attribute to it.
+                Examples are the name of a person, the VAT number of a company and so on.
+            </dd>
+            <dt><dfn id="dfn-relationship">relationship</dfn></dt>
+            <dd>
+                An entity and its attributes are connected with each other using relationships.
+                A relationship describes how a attribute relates to its entity.
+            </dd>
+        </dl>
+    </section>
+    <section>
+        <h2>Visualization</h2>
+
+        <dl>
+            <dt><dfn id="dfn-node">node</dfn></dt>
+            <dd>
+                A node is a visual representation of either an entity or an attribute.
+            </dd>
+            <dt><dfn id="dfn-edge">edge</dfn></dt>
+            <dd>
+                An edge is a line connecting two nodes.
+                It represents the relationship between two entities or one entity and one attribute.
+            </dd>
+            <dt><dfn id="dfn-graph">graph</dfn></dt>
+            <dd>
+                A graph is a collection of nodes and edges.
+            </dd>
+        </dl>
+    </section>
+</section>
+
+<!--<section>
+    <h2>Conformance</h2>
+</section>
+-->
+
+<section>
+    <h2>Graphical Primitives</h2>
+
+    <table id="tab-vis-prim">
+        <tr>
+            <th>Name</th>
+            <th>Primitive</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>rectangle</td>
+            <td><img src="./images/primitives/rectangle.svg"/></td>
+            <td>
+                <ul>
+                    <li>attribute</li>
+                    <li>relationship</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>line</td>
+            <td><img src="./images/primitives/solid-edge.svg"/></td>
+            <td>
+                <ul>
+                    <li>relationship</li>
+                    <li>border of data shapes</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+        <tr>
+            <td rowspan="2">line style</td>
+            <td><img src="./images/primitives/solid-edge.svg"/></td>
+            <td>
+                <ul>
+                    <li>relationship</li>
+                    <li>border of nodes</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="./images/primitives/dashed-edge.svg"/></td>
+            <td>
+                <ul>
+                    <li>anonymous entity</li>
+                </ul>
+            </td>
+        </tr>
+
+       <tr>
+            <td>arrowhead</td>
+            <td><img src="./images/primitives/arrow-head.svg"/></td>
+            <td>
+                <ul>
+                    <li>relationship</li>
+                </ul>
+            </td>
+        </tr>
+   </table>
+</section>
+</section>
+
+<section id="sec-colors">
+    <h2>Colors</h2>
+
+    <section>
+        <h2>General</h2>
+
+        <table id="tab-general-colors">
+            <tr>
+                <th>Abstract Color Name</th>
+                <th colspan="2">Concrete Color Recommendation</th>
+                <th>Description</th>
+                <th>Application</th>
+            </tr>
+            <tr>
+                <td class="side">canvas</td>
+                <td>#ffffff</td>
+                <td>white</td>
+                <td>*todo*</td>
+                <td>*todo*</td>
+            </tr>
+            <tr>
+                <td class="side">foreground</td>
+                <td style="background: #000000; color: #ffffff">#000000</td>
+                <td>black</td>
+                <td>Very dark color with a good contrast to all other colors.</td>
+                <td>border of elements and edges</td>
+            </tr>
+            <tr>
+                <td class="side">base color</td>
+                <td colspan="2">see next table</td>
+                <td>Every data source has its own base color, unique for every source.</td>
+                <td>*todo*</td>
+            </tr>
+            <tr>
+                <td class="side">highlight</td>
+                <td colspan="2">see next table</td>
+                <td>For each element coming from a source, and property, the highlight color is a darker shade of the
+                    base color of that source or property.
+                </td>
+                <td>*todo*</td>
+            </tr>
+            <tr>
+                <td class="side">error</td>
+                <td colspan="2">see next table</td>
+                <td>For each element coming from a source, and property, the error color is in strong contrast with the
+                    base color of that source or property.
+                </td>
+                <td>*todo*</td>
+            </tr>
+        </table>
+    </section>
+
+<section>
+    <h2>Visualization</h2>
+
+    <section>
+        <h2>Entity</h2>
+
+        <p>
+            An entity is visualized as node by using the visual primitive <span class="emph">circle</span> using the ?? line style.
+            Inside the node the following information is show if available: parameter of the value type and the entity type.
+            The color of the node depends on the value type and the input data source (also see the <a href="#sec-colors">colors section</a>).
+        </p>
+    </section>
+
+    <section>
+        <h2>Anonymous Entity</h2>
+
+        <p>
+            An entity is visualized as node by using the visual primitive <span class="emph">circle</span> using the ?? line style.
+            Inside the node only the entity type is shown if available.
+            The color of the node is defined <a href="#sec-color-schemas">here</a>.
+        </p>
+    </section>
+
+    <section>
+        <h2>Attribute</h2>
+
+        <p>
+            An attribute is visualized as node by using the visual primitive <span class="emph">rectangle</span> using the ?? line style.
+            Inside the node only the parameter of the value type is specified.
+        </p>
+    </section>
+
+    <section>
+        <h2>Relationship</h2>
+
+        <p>
+            A relationship always has a starting point an (anonymous) entity.
+            The end point of a relationship can be either an (anonymous) entity or an attribute.
+            Between the nodes a line is drawn using the ?? line style.
+            One or multiple arrowheads are used to state the direction from the relationship: from the starting point to
+            the ending point.
+        </p>
+    </section>
+
+    <section>
+        <h2>What Is Not Shown</h2>
+
+        <ul>
+            <li>The actual error/warning/suggestion/condition is not shown in the visualization. However, when clicking on the
+                cooresponding icon users receive more information through the GUI.
+            </li>
+            <li>The language of an attribute is not shown. However, when clickon the node representing the attribute
+                more information about the attribute is shown in the GUI including the language.
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h2>Example</h2>
+        <p>
+            Below you can find an example for constraints expressed with ShapeUML.
+        </p>
+
+        <figure id="example-highest">
+            <img src="images/example-highest.svg" />
+            <figcaption>Test</figcaption>
+        </figure>
+   </section>
+</section>
+
+<section>
+    <h2>Interaction</h2>
+</section>
+</body>
+</html>
