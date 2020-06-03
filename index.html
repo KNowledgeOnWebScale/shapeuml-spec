@@ -332,7 +332,8 @@
     <h2>Constraints</h2>
 
     First, we elaborate on how constraints and data shapes are visualized.
-    Next, we provide a visual example.
+    Next, we provide a mapping from constraint-specific terminology to labels for the visual notation.
+    Finally, we provide a visual example.
     <section>
         <h2>Visualization</h2> 
         <table id="tab-visualization" class="example-table">
@@ -363,6 +364,73 @@
             </tr>
         </table>
  
+   </section>
+
+
+   <section>
+     <h2>Labels</h2>
+     Labels in the visual notations may differ from the terminology of RDF constraints.
+     In the following we list the mappinng between terminology and visual notation labels.
+
+    <table id="tab-terminology-mappig">
+     <tr>
+       <th>Term</th>
+       <th>Label</th>
+       <th>Description</th>
+     </tr>
+    <tr>
+       <td>Node Shape</td>
+       <td>Node Conditions</td>
+       <td>The type of a data shape</td>
+    </tr>
+    <tr>
+       <td>Property Shape</td>
+       <td>Property Conditions</td>
+       <td>The type of a data shape</td>
+    </tr>
+    <tr>
+       <td>IRI</td>
+       <td>IRI</td>
+       <td>The unique identifier of a data shape</td>
+    </tr>
+    <tr>
+       <td>targetNode</td>
+       <td>appliesOn</td>
+       <td></td>
+    </tr>
+    <tr>
+       <td>targetClass</td>
+       <td>appliesOnClass</td>
+       <td></td>
+    </tr>
+    <tr>
+       <td>minCount</td>
+       <td>1..*</td>
+       <td>The inclusive min count is the left number. In case only maximum but no minimum is specified, the minimum is 0</td>
+    </tr>
+    <tr>
+       <td>maxCount</td>
+       <td>0..1</td>
+       <td>The inclusive max count is the right number. In case only minimum but no maximum is specified, the maximum is '*'</td>
+    </tr>
+    <tr>
+       <td>todo</td>
+       <td></td>
+       <td></td>
+    </tr>
+    <tr>
+       <td></td>
+       <td></td>
+       <td></td>
+    </tr>
+    <tr>
+       <td></td>
+       <td></td>
+       <td></td>
+    </tr>
+
+    </table>
+
    </section>
 
     <section>
