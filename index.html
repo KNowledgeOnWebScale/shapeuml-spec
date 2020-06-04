@@ -335,9 +335,159 @@
 <section>
     <h2>Constraints</h2>
 
-    First, we elaborate on how constraints and data shapes are visualized.
-    Next, we provide a mapping from constraint-specific terminology to labels for the visual notation.
-    Finally, we provide a visual example.
+    First, we provide a mapping from constraint-specific terminology to labels for the visual notation.
+    Next, we elaborate on how constraints and data shapes are visualized.
+    Finally, we provide a complete visual example.
+
+   <section>
+     <h2>Labels</h2>
+     Labels in the visual notations may differ from the terminology of RDF constraints.
+     In the following we list the mappinng between terminology and visual notation labels.
+
+    <table id="tab-terminology-mappig">
+     <tr>
+       <th>Term source</th>
+       <th>Term</th>
+       <th>Label</th>
+       <th>Description</th>
+     </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>Node Shape</td>
+       <td>Node Conditions</td>
+       <td>The type of a data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>Property Shape</td>
+       <td>Property Conditions</td>
+       <td>The type of a data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>IRI</td>
+       <td>IRI</td>
+       <td>The unique identifier of a data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>targetNode</td>
+       <td>appliesOn instance(x)</td>
+       <td>Specifies on which data a data shape applies by default</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>targetClass</td>
+       <td>appliesOn class(x)</td>
+       <td>Specifies on which data a data shape applies by default</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>targetSubjectsOf</td>
+       <td>appliesOn subjectsOf(x)</td>
+       <td>Specifies on which data a data shape applies by default</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>targetObjectsOf</td>
+       <td>appliesOn objectsOf(x)</td>
+       <td>Specifies on which data a data shape applies by default</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>minCount</td>
+       <td>1..*</td>
+       <td>The inclusive min count is the left number. In case only maximum but no minimum is specified, the minimum is 0</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>maxCount</td>
+       <td>0..1</td>
+       <td>The inclusive max count is the right number. In case only minimum but no maximum is specified, the maximum is '*'</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>pattern, flags</td>
+       <td>/pattern/flags</td>
+       <td>The constraint type 'pattern', a regular expression separated with a dash from possible flags</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>Xone</td>
+       <td>OneOf</td>
+       <td>The logical relationship representing exclusive or</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>node</td>
+       <td>compliesWith</td>
+       <td>The constraint type expressing that one data shape should comply with another data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>property</td>
+       <td>-</td>
+       <td>Not used, instead the property path of the property shape is displayed as label</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>qualifiedValueShape, qualifiedMinCount, qualifiedMaxCount</td>
+       <td>compliesWith, 1..2</td>
+       <td>The constraint type expressing that the specified number of a data shape should comply with another data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>ignoredProperties</td>
+       <td>otherAllowedProperties</td>
+       <td>Specifies which properties of a node are allowed even in a closed data shape</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>in</td>
+       <td>valueIn</td>
+       <td>This constraint type specifies that a value needs to be member of a provided list</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>sequence path</td>
+       <td>property1/property2</td>
+       <td>A property path following the SPARQL 1.1 specification</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>alternative path</td>
+       <td>property1 | property2</td>
+       <td>An alternative property path following the SPARQL 1.1 specification</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>inverse path</td>
+       <td>^property1</td>
+       <td>An inverse property path following the SPARQL 1.1 specification</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>zero-or-more path</td>
+       <td>property1/property2*</td>
+       <td>Zero or more property path following the SPARQL 1.1 specification</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>One-or-more path</td>
+       <td>property1/property2+</td>
+       <td>One or more property path following the SPARQL 1.1 specification</td>
+    </tr>
+    <tr>
+       <td>SHACL</td>
+       <td>Zero-or-more path</td>
+       <td>property1/property2?</td>
+       <td>Zero or more property path following the SPARQL 1.1 specification</td>
+    </tr>
+
+    </table>
+
+   </section>
+
     <section>
         <h2>Visualization</h2> 
         <table id="tab-visualization" class="example-table">
@@ -371,131 +521,6 @@
    </section>
 
 
-   <section>
-     <h2>Labels</h2>
-     Labels in the visual notations may differ from the terminology of RDF constraints.
-     In the following we list the mappinng between terminology and visual notation labels.
-
-    <table id="tab-terminology-mappig">
-     <tr>
-       <th>Term</th>
-       <th>Label</th>
-       <th>Description</th>
-     </tr>
-    <tr>
-       <td>Node Shape</td>
-       <td>Node Conditions</td>
-       <td>The type of a data shape</td>
-    </tr>
-    <tr>
-       <td>Property Shape</td>
-       <td>Property Conditions</td>
-       <td>The type of a data shape</td>
-    </tr>
-    <tr>
-       <td>IRI</td>
-       <td>IRI</td>
-       <td>The unique identifier of a data shape</td>
-    </tr>
-    <tr>
-       <td>targetNode</td>
-       <td>appliesOn instance(x)</td>
-       <td>Specifies on which data a data shape applies by default</td>
-    </tr>
-    <tr>
-       <td>targetClass</td>
-       <td>appliesOn class(x)</td>
-       <td>Specifies on which data a data shape applies by default</td>
-    </tr>
-    <tr>
-       <td>targetSubjectsOf</td>
-       <td>appliesOn subjectsOf(x)</td>
-       <td>Specifies on which data a data shape applies by default</td>
-    </tr>
-    <tr>
-       <td>targetObjectsOf</td>
-       <td>appliesOn objectsOf(x)</td>
-       <td>Specifies on which data a data shape applies by default</td>
-    </tr>
-    <tr>
-       <td>minCount</td>
-       <td>1..*</td>
-       <td>The inclusive min count is the left number. In case only maximum but no minimum is specified, the minimum is 0</td>
-    </tr>
-    <tr>
-       <td>maxCount</td>
-       <td>0..1</td>
-       <td>The inclusive max count is the right number. In case only minimum but no maximum is specified, the maximum is '*'</td>
-    </tr>
-    <tr>
-       <td>pattern, flags</td>
-       <td>/pattern/flags</td>
-       <td>The constraint type 'pattern', a regular expression separated with a dash from possible flags</td>
-    </tr>
-    <tr>
-       <td>Xone</td>
-       <td>OneOf</td>
-       <td>The logical relationship representing exclusive or</td>
-    </tr>
-    <tr>
-       <td>node</td>
-       <td>compliesWith</td>
-       <td>The constraint type expressing that one data shape should comply with another data shape</td>
-    </tr>
-    <tr>
-       <td>property</td>
-       <td>-</td>
-       <td>Not used, instead the property path of the property shape is displayed as label</td>
-    </tr>
-    <tr>
-       <td>qualifiedValueShape, qualifiedMinCount, qualifiedMaxCount</td>
-       <td>compliesWith, 1..2</td>
-       <td>The constraint type expressing that the specified number of a data shape should comply with another data shape</td>
-    </tr>
-    <tr>
-       <td>ignoredProperties</td>
-       <td>otherAllowedProperties</td>
-       <td>Specifies which properties of a node are allowed even in a closed data shape</td>
-    </tr>
-    <tr>
-       <td>in</td>
-       <td>valueIn</td>
-       <td>This constraint type specifies that a value needs to be member of a provided list</td>
-    </tr>
-    <tr>
-       <td>sequence path</td>
-       <td>property1/property2</td>
-       <td>A property path following the SPARQL 1.1 specification</td>
-    </tr>
-    <tr>
-       <td>alternative path</td>
-       <td>property1 | property2</td>
-       <td>An alternative property path following the SPARQL 1.1 specification</td>
-    </tr>
-    <tr>
-       <td>inverse path</td>
-       <td>^property1</td>
-       <td>An inverse property path following the SPARQL 1.1 specification</td>
-    </tr>
-    <tr>
-       <td>zero-or-more path</td>
-       <td>property1/property2*</td>
-       <td>Zero or more property path following the SPARQL 1.1 specification</td>
-    </tr>
-    <tr>
-       <td>One-or-more path</td>
-       <td>property1/property2+</td>
-       <td>One or more property path following the SPARQL 1.1 specification</td>
-    </tr>
-    <tr>
-       <td>Zero-or-more path</td>
-       <td>property1/property2?</td>
-       <td>Zero or more property path following the SPARQL 1.1 specification</td>
-    </tr>
-
-    </table>
-
-   </section>
 
     <section>
         <h2>Example</h2>
