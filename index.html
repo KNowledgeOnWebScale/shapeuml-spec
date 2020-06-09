@@ -244,7 +244,16 @@
             <td>labels, constraints and other textual information</td>
         </tr>
    </table>
-</section>
+
+   <section>
+     <h2>Splitting rules</h2>
+     <p>
+       Node shapes can be reused by a directed dashed connection and property shapes can be reused by directed solid connections.
+       Property shapes are visualized only once, however, ingoing solid connections with a property path as label and cardinalities on the arrow head
+       are splitted. I.e. a property shape which is reused <code>n</code> times will be visualilzed only once but will have <code>n</code> ingoing
+       solid edges with the property path as label and cardinalities on the arrow head.
+     <p>
+   </section>
 </section>
 
 <section id="sec-colors">
