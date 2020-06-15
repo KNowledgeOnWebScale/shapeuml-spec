@@ -15,6 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased - 2020-06-03
 
 ### Added
-- First draft v1.0.0
+- First draft
 
 [1.0.0]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/-/tags/v1.0.0
