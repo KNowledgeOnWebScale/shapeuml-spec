@@ -3,6 +3,8 @@
 The specification of ShapeUML,
 a visual notation for RDF constraints based on UML.
 
+Online available via https://w3id.org/imec/unshacled/spec/shape-uml
+
 ## Usage
 You can update the specification by doing the following:
 
