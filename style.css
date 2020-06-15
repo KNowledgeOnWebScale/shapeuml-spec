@@ -16,6 +16,7 @@ td {
 }
 
 table.example-table td {
+  width:50%;
 }
 
 .center-text th, .center-text td {
@@ -24,6 +25,11 @@ table.example-table td {
 
 table.small-images img {
     max-width: 125px;
+}
+
+table.example-table img {
+  height: 400px;
+  width: 400px;
 }
 
 span.bold {
