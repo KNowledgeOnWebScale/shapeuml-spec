@@ -27,9 +27,9 @@ dfn{cursor:pointer}
     
 
     
-<link rel="stylesheet" type="text/css" href="./resources/css/style.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
     
-<link rel="stylesheet" type="text/css" href="./resources/css/extras.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/extras.css">
     
     
 
@@ -518,14 +518,14 @@ ShapeUML follows this profile but also adapt graphical symbols to the needs for 
   </tr>
   <tr>
     <td>rectangle</td>
-    <td><img src="./resources/images/primitives/rectangle.svg"></td>
+    <td><img src="../resources/images/primitives/rectangle.svg"></td>
     <td>
        data shape
     </td>
   </tr>
   <tr>
     <td>solid line</td>
-    <td><img src="./resources/images/primitives/solid-edge.svg"></td>
+    <td><img src="../resources/images/primitives/solid-edge.svg"></td>
     <td>
        <ul>
          <li>relationship between a node and a property shape</li>
@@ -535,7 +535,7 @@ ShapeUML follows this profile but also adapt graphical symbols to the needs for 
   <tr>
   </tr><tr>
     <td>dashed line</td>
-    <td><img src="./resources/images/primitives/dashed-edge.svg"></td>
+    <td><img src="../resources/images/primitives/dashed-edge.svg"></td>
     <td>
       <ul>
         <li>relationship between nodes and data shapes or property shapes and node shapes (not between node shapes and property shapes)</li>
@@ -546,7 +546,7 @@ ShapeUML follows this profile but also adapt graphical symbols to the needs for 
 
    <tr>
       <td>arrowhead</td>
-      <td><img src="./resources/images/primitives/arrow-head.svg"></td>
+      <td><img src="../resources/images/primitives/arrow-head.svg"></td>
       <td>
         relationship direction
       </td>
@@ -594,13 +594,13 @@ Finally, we provide a complete visual example.</p><section id="semantic-construc
 We provide a mapping of semantic constructs to visual representations with ShapeUML,
 i.e. in the first figure we provide the mapping from SHACL core constraints
 and in the second figure we provide the mapping from other relevant SHACL concepts.</p><figure id="semantic-constructs"> 
-  <img src="./resources/images/2020-journal-mapping-shapeuml-core-constraints-summary.svg" style="height:100%;width:100%">
+  <img src="../resources/images/2020-journal-mapping-shapeuml-core-constraints-summary.svg" style="height:100%;width:100%">
   <figcaption>Figure <bdi class="figno">1</bdi> <span class="fig-title">
     Semantic constructs of SHACL core constraints
     and their visual representation in ShapeUML.
   </span></figcaption>
 </figure><figure id="semantic-constructs"> 
-  <img src="./resources/images/2020-journal-mapping-shapeuml-other-concepts-summary.svg" style="height:100%;width:100%">
+  <img src="../resources/images/2020-journal-mapping-shapeuml-other-concepts-summary.svg" style="height:100%;width:100%">
   <figcaption>Figure <bdi class="figno">2</bdi> <span class="fig-title">
     Semantic constructs of validation-related SHACL concepts
     and their visual representation in ShapeUML.
@@ -610,7 +610,7 @@ Property shapes are visualized only once, however, ingoing solid connections wit
 I.e. a property shape which is reused <code>n</code> times will be visualized only once
 but will have <code>n</code> ingoing solid edges with the property path as label
 and cardinalities on the arrow head.</p></section><section id="example"><h3 id="x5-3-example"><bdi class="secno">5.3 </bdi>Example<a class="self-link" aria-label="§" href="#example"></a></h3><p>Below you can find an example for constraints expressed with ShapeUML.</p><figure id="example-shapeuml"> 
-  <img src="./resources/images/example-shapeuml.svg" style="height:100%;width:100%">
+  <img src="../resources/images/example-shapeuml.svg" style="height:100%;width:100%">
   <figcaption>Figure <bdi class="figno">3</bdi> <span class="fig-title">
     Constraints visualized using ShapeUML: A subject valid to the Person data shape should have an IRI (1),
     at least one but maximum two <code>ex:address</code> properties (2) of class <code>schema:PostalAddress</code> (3)
