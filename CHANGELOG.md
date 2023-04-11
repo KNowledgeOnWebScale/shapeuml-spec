@@ -42,6 +42,6 @@ This version only contains adminstrative changes, **no spec content was changed*
 ### Added
 - First draft
 
-[20200615]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/-/tags/v1.0.0
-[20210118]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/compare/20210118...v1.0.0
-[20230411]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/compare/20230411...20210118
+[20200615]: https://github.com/KNowledgeOnWebScale/shapeuml-spec/-/tags/v1.0.0
+[20210118]: https://github.com/KNowledgeOnWebScale/shapeuml-spec/compare/20210118...v1.0.0
+[20230411]: https://github.com/KNowledgeOnWebScale/shapeuml-spec/compare/20230411...20210118
