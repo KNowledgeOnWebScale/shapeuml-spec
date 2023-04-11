@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
+## [20230411] - 2023-04-11
+
+This version only contains adminstrative changes, **no spec content was changed**.
+
+### Changed
+
+- Updated affiliations
+- Deployment via GitHub pages
+
+### Fixed
+
+- Image resources are now also shown when watching a specific version of the spec ([#1](https://github.com/KNowledgeOnWebScale/shapeuml-spec/issues/1))
+
 ## [20210118] - 2021-01-18
 
 ### Added
@@ -31,3 +44,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/).
 
 [20200615]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/-/tags/v1.0.0
 [20210118]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/compare/20210118...v1.0.0
+[20230411]: https://gitlab.ilabt.imec.be/data-validation/validation-editor/shapeuml-spec/compare/20230411...20210118
